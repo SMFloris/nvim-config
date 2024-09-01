@@ -23,7 +23,6 @@ wk.add({"<leader>l", group = "LSP", expand = function()
     {"<leader>lc", group = "Code Actions"}
   }
 end})
-wk.add(({"<leader>lc", group = "LSP"}))
 
 -- Keep window centered when going up/down
 vim.keymap.set("n", "J", "mzJ`z")
