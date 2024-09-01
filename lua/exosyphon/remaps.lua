@@ -1,5 +1,8 @@
 local wk = require("which-key")
 
+wk.add({"<leader>/", hidden = true})
+wk.add({"<leader>?", hidden = true})
+
 -- Oil
 vim.keymap.set("n", "-", "<CMD>Oil --float<CR>", { desc = "Open parent directory" })
 
