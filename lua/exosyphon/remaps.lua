@@ -112,7 +112,7 @@ vim.api.nvim_create_autocmd("TermOpen", {
 
 local function toggleNvimTreeWithoutFocus()
   local tree = require('nvim-tree.api').tree;
-  tree.open({focus = false});
+  tree.toggle({focus = false});
 end
 
 -- highlight yanks
