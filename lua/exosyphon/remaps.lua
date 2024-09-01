@@ -20,7 +20,7 @@ wk.add({"<leader>f", group = "Telescope"})
 
 wk.add({"<leader>l", group = "LSP", expand = function()
   return {
-    {"<leader>lc", group = "Code Actions"}
+    {"c", group = "Code Actions"}
   }
 end})
 
