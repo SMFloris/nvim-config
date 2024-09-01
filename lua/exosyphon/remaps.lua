@@ -205,7 +205,9 @@ vim.api.nvim_create_autocmd({'BufEnter', 'QuitPre'}, {
 })
 
 -- Neotree
-wk.add(({"<leader>e", group = "File explorer"}))
+wk.add({"<leader>e", group = "File explorer"})
 vim.keymap.set("n", "<leader>e", "<cmd>NvimTreeOpen<CR>", {desc = "Show NvimTree"})
+wk.add({"<leader>eE", proxy="<leader>E", group = "File explorer", desc = "Focus NvimTree"})
+wk.add({"<leader>E", hidden = true})
 vim.keymap.set("n", "<leader>E", nvimTreeFocusOrToggle, {desc = "Focus NvimTree", group = "File explorer"})
 
