@@ -3,6 +3,7 @@ return {
   event = "VeryLazy",
   lazy = false,
   provider = "ollama",
+  opts = {
   vendors = {
        ollama = {
          ["local"] = true,
@@ -28,8 +29,6 @@ return {
          end,
        },
   },
-  opts = {
-    -- add any opts here
   },
   build = ":AvanteBuild", -- This is optional, recommended tho. Also note that this will block the startup for a bit since we are compiling bindings in Rust.
   dependencies = {
