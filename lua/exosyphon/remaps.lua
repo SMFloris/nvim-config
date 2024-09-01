@@ -18,6 +18,7 @@ vim.keymap.set("n", "==", "gg<S-v>G")
 
 vim.keymap.set("n", "<leader>l", "<nop>", {desc = "LSP"})
 vim.keymap.set("n", "<leader>lc", "<nop>", {desc = "Code Actions"})
+vim.keymap.set("n", "<leader>lp", "<nop>", {desc = "Parameter swap"})
 vim.keymap.set("n", "<leader>f", "<nop>", {desc = "Telescope"})
 
 -- Keep window centered when going up/down
