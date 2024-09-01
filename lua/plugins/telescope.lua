@@ -22,6 +22,7 @@ return {
       { desc = "Live Grep Code" }
     )
     vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Find Buffers" })
+    vim.keymap.set("n", "<leader>fq", builtin.quickfix, { desc = "Open QuickFixList" })
     vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Find Help Tags" })
     vim.keymap.set("n", "<leader>fs", builtin.lsp_document_symbols, { desc = "Find Symbols" })
     vim.keymap.set("n", "<leader>fr", builtin.lsp_references, { desc = "Find References" })
