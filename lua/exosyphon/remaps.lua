@@ -16,7 +16,7 @@ vim.keymap.set("n", "Y", "y$")
 -- Select all
 vim.keymap.set("n", "==", "gg<S-v>G")
 
-wk.add(({"<leader>f", group = "Find"}))
+wk.add(({"<leader>f", group = "Telescope"}))
 
 -- Keep window centered when going up/down
 vim.keymap.set("n", "J", "mzJ`z")
@@ -24,10 +24,6 @@ vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
-
--- Neotree
-wk.add(({"<leader>e", group = "File explorer"}))
-vim.keymap.set("n", "<leader>e", "<cmd>Neotree toggle left<CR>", {desc = "Show Neotree"})
 
 -- close buffer
 vim.keymap.set("n", "<leader>q", "<cmd>bd<CR>", { desc = "Close Buffer" })
@@ -45,16 +41,15 @@ vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><
 
 -- Debug Tests
 wk.add(({"<leader>d", group = "Debug"}))
-vim.keymap.set("n", "<leader>dt", "<cmd>DapContinue<CR>", { desc = "Start Debugging" })
 vim.keymap.set("n", "<leader>dc", "<cmd>DapContinue<CR>", { desc = "Start Debugging" })
 vim.keymap.set("n", "<leader>dso", "<cmd>DapStepOver<CR>", { desc = "Step Over" })
 vim.keymap.set("n", "<leader>dsi", "<cmd>DapStepInto<CR>", { desc = "Step Into" })
 vim.keymap.set("n", "<leader>dsu", "<cmd>DapStepOut<CR>", { desc = "Step Out" })
 vim.keymap.set("n", "<leader>dst", "<cmd>DapStepTerminate<CR>", { desc = "Stop Debugger" })
-vim.keymap.set("n", "<leader>b", "<cmd>lua require'dap'.toggle_breakpoint()<CR>", { desc = "Toggle Breakpoint" })
-vim.keymap.set("n", "<leader>B", "<cmd>lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>",
+vim.keymap.set("n", "<leader>da", "<cmd>lua require'dap'.toggle_breakpoint()<CR>", { desc = "Toggle Breakpoint" })
+vim.keymap.set("n", "<leader>dA", "<cmd>lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>",
   { desc = "Toggle Breakpoint Condition" })
-vim.keymap.set("n", "<leader>E", "<cmd>lua require'dap'.set_exception_breakpoints()<CR>",
+vim.keymap.set("n", "<leader>dE", "<cmd>lua require'dap'.set_exception_breakpoints()<CR>",
   { desc = "Toggle Exception Breakpoint" })
 vim.keymap.set("n", "<leader>dr",
   "<cmd>lua require'dapui'.float_element('repl', { width = 100, height = 40, enter = true })<CR>",
@@ -123,3 +118,94 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   pattern  = "*",
   callback = function() vim.highlight.on_yank { timeout = 200 } end
 })
+
+local nvimTreeFocusOrToggle = function ()
+	local nvimTree=require("nvim-tree.api")
+	local currentBuf = vim.api.nvim_get_current_buf()
+	local currentBufFt = vim.api.nvim_get_option_value("filetype", { buf = currentBuf })
+	if currentBufFt == "NvimTree" then
+		nvimTree.tree.toggle()
+	else
+		nvimTree.tree.focus()
+	end
+end
+
+
+vim.api.nvim_create_autocmd({'BufEnter', 'QuitPre'}, {
+  nested = false,
+  callback = function(e)
+    local tree = require('nvim-tree.api').tree
+
+    -- Nothing to do if tree is not opened
+    if not tree.is_visible() then
+      return
+    end
+
+    -- How many focusable windows do we have? (excluding e.g. incline status window)
+    local winCount = 0
+    for _,winId in ipairs(vim.api.nvim_list_wins()) do
+      if vim.api.nvim_win_get_config(winId).focusable then
+        winCount = winCount + 1
+      end
+    end
+
+    -- We want to quit and only one window besides tree is left
+    if e.event == 'QuitPre' and winCount == 2 then
+      vim.api.nvim_cmd({cmd = 'qall'}, {})
+    end
+
+    -- :bd was probably issued an only tree window is left
+    -- Behave as if tree was closed (see `:h :bd`)
+    if e.event == 'BufEnter' and winCount == 1 then
+      -- Required to avoid "Vim:E444: Cannot close last window"
+      vim.defer_fn(function()
+        -- close nvim-tree: will go to the last buffer used before closing
+        tree.toggle({find_file = true, focus = true})
+        -- re-open nivm-tree
+        tree.toggle({find_file = true, focus = false})
+      end, 10)
+    end
+  end
+})
+vim.api.nvim_create_autocmd({'BufEnter', 'QuitPre'}, {
+  nested = false,
+  callback = function(e)
+    local tree = require('nvim-tree.api').tree
+
+    -- Nothing to do if tree is not opened
+    if not tree.is_visible() then
+      return
+    end
+
+    -- How many focusable windows do we have? (excluding e.g. incline status window)
+    local winCount = 0
+    for _,winId in ipairs(vim.api.nvim_list_wins()) do
+      if vim.api.nvim_win_get_config(winId).focusable then
+        winCount = winCount + 1
+      end
+    end
+
+    -- We want to quit and only one window besides tree is left
+    if e.event == 'QuitPre' and winCount == 2 then
+      vim.api.nvim_cmd({cmd = 'qall'}, {})
+    end
+
+    -- :bd was probably issued an only tree window is left
+    -- Behave as if tree was closed (see `:h :bd`)
+    if e.event == 'BufEnter' and winCount == 1 then
+      -- Required to avoid "Vim:E444: Cannot close last window"
+      vim.defer_fn(function()
+        -- close nvim-tree: will go to the last buffer used before closing
+        tree.toggle({find_file = true, focus = true})
+        -- re-open nivm-tree
+        tree.toggle({find_file = true, focus = false})
+      end, 10)
+    end
+  end
+})
+
+-- Neotree
+wk.add(({"<leader>e", group = "File explorer"}))
+vim.keymap.set("n", "<leader>e", "<cmd>NvimTreeOpen<CR>", {desc = "Show NvimTree"})
+vim.keymap.set("n", "<leader>E", nvimTreeFocusOrToggle, {desc = "Focus NvimTree", group = "File explorer"})
+
