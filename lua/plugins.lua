@@ -328,7 +328,6 @@ return {
           "bash",
           "ruby",
           "markdown",
-          "java",
         },
         sync_install = false,
         highlight = { enable = true },
@@ -379,10 +378,10 @@ return {
           swap = {
             enable = true,
             swap_next = {
-              ["<leader>p"] = "@parameter.inner",
+              ["<leader>lpn"] = "@parameter.inner",
             },
             swap_previous = {
-              ["<leader>ps"] = "@parameter.inner",
+              ["<leader>lpp"] = "@parameter.inner",
             },
           },
         },

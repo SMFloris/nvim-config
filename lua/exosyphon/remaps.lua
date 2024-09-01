@@ -164,5 +164,5 @@ wk.add({"<leader>e", group = "File explorer"})
 vim.keymap.set("n", "<leader>e", toggleNvimTreeWithoutFocus, {desc = "Show NvimTree"})
 wk.add({"<leader>ee", proxy="<leader>E", group = "File explorer", desc = "Focus NvimTree"})
 wk.add({"<leader>E", hidden = true})
-vim.keymap.set("n", "<leader>E", "<cmd>NvimTreeFocus<CR>", {desc = "Focus NvimTree"})
+vim.keymap.set("n", "<leader>E", "<cmd>NvimTreeFindFile<CR>", {desc = "Focus current file in NvimTree"})
 
