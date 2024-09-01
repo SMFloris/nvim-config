@@ -11,13 +11,13 @@ return {
     vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Find Files" })
     vim.keymap.set(
       "n",
-      "<leader>fg",
+      "<leader>fw",
       "<cmd>lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>",
       { desc = "Live Grep" }
     )
     vim.keymap.set(
       "n",
-      "<leader>fw",
+      "<leader>fg",
       '<cmd>lua require("telescope.builtin").live_grep({ glob_pattern = "!{spec,test}"})<CR>',
       { desc = "Live Grep Code" }
     )
