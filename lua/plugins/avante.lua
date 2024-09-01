@@ -19,7 +19,7 @@ return {
             body = {
               model = opts.model,
               messages = require("avante.providers").claude.parse_message(code_opts),  -- you can make your own message, but this is very advanced
-              max_tokens = 2048,
+              max_tokens = 4096,
               stream = true,
             },
           }
