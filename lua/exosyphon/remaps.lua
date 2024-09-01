@@ -70,6 +70,9 @@ vim.keymap.set("n", "<leader>do", "<cmd>lua require'dapui'.toggle()<CR>", { desc
 vim.keymap.set("n", "<leader>dl", "<cmd>lua require'dap'.run_last()<CR>", { desc = "Debug Last Test" })
 
 -- Copy file paths
+vim.keymap.set("n", "<leader>c", "<nop>", {desc = "Copy File Info"})
+vim.keymap.set("n", "<leader>h", "<nop>", {desc = "Git Hunk"})
+vim.keymap.set("n", "<leader>g", "<nop>", {desc = "Git"})
 vim.keymap.set("n", "<leader>cf", "<cmd>let @+ = expand(\"%\")<CR>", { desc = "Copy File Name" })
 vim.keymap.set("n", "<leader>cp", "<cmd>let @+ = expand(\"%:p\")<CR>", { desc = "Copy File Path" })
 
