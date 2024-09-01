@@ -18,9 +18,12 @@ vim.keymap.set("n", "==", "gg<S-v>G")
 
 wk.add({"<leader>f", group = "Telescope"})
 
-wk.add({"<leader>l", group = "LSP"})
-wk.add({"<leader>lca", group = "LSP", desc = "Code Actions"})
-wk.add({"<leader>lcr", group = "LSP", desc = "Code Reference"})
+wk.add({"<leader>l", group = "LSP", expand = function()
+  return {
+    {"<leader>lcr", desc = "Code Reference"},
+    {"<leader>lca", desc = "Code Actions"}
+  }
+end})
 
 -- Keep window centered when going up/down
 vim.keymap.set("n", "J", "mzJ`z")
