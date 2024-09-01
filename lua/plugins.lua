@@ -22,24 +22,9 @@ return {
   { 'brenoprata10/nvim-highlight-colors' },
   { "tpope/vim-projectionist" },
   {
-    "nvim-neo-tree/neo-tree.nvim",
-    branch = "v3.x",
-    cmd = { "Neotree" },
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "nvim-tree/nvim-web-devicons",
-      "MunifTanjim/nui.nvim",
-    },
+    "nvim-tree/nvim-tree.lua",
     config = function()
-      require("neo-tree").setup({
-        close_if_last_window = true,
-        filesystem = {
-          follow_current_file = {
-            enabled = false,
-            leave_dirs_open = true,
-          },
-        },
-      })
+      require("nvim-tree").setup()
     end,
   },
   {
@@ -54,7 +39,6 @@ return {
     },
     config = true,
   },
-  { "mfussenegger/nvim-jdtls" },
   {
     "stevearc/oil.nvim",
     opts = {},
@@ -86,27 +70,6 @@ return {
         },
       })
     end,
-  },
-  {
-    "folke/zen-mode.nvim",
-    opts = {
-      on_open = function(_)
-        vim.opt.nu = false
-        vim.opt.relativenumber = false
-        require("noice").disable()
-        require("ufo").disable()
-        vim.o.foldcolumn = "0"
-        vim.o.foldenable = false
-      end,
-      on_close = function()
-        vim.opt.nu = true
-        vim.opt.relativenumber = true
-        require("noice").enable()
-        require("ufo").enable()
-        vim.o.foldcolumn = "1"
-        vim.o.foldenable = true
-      end,
-    },
   },
   {
     "nvimdev/dashboard-nvim",
@@ -628,12 +591,6 @@ return {
       )
       vim.keymap.set("n", "<leader>flt", "<cmd>:FloatermToggle<CR>", { desc = "Toggle FloatTerm" })
       vim.keymap.set("t", "<leader>flt", "<cmd>:FloatermToggle<CR>", { desc = "Toggle FloatTerm" })
-    end,
-  },
-  {
-    "tummetott/unimpaired.nvim",
-    config = function()
-      require("unimpaired").setup()
     end,
   },
   {
