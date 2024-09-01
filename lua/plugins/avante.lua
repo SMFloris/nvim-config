@@ -8,7 +8,7 @@ return {
       ollama = {
         ["local"] = true,
         endpoint = "127.0.0.1:11434/v1",
-        model = "codegemma",
+        model = "deepseek-coder-v2",
         parse_curl_args = function(opts, code_opts)
           return {
             url = opts.endpoint .. "/chat/completions",
