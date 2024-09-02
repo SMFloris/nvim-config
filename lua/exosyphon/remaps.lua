@@ -23,6 +23,7 @@ vim.keymap.set("n", "<leader>l", "<nop>", {desc = "LSP"})
 vim.keymap.set("n", "<leader>lc", "<nop>", {desc = "Code Actions"})
 vim.keymap.set("n", "<leader>lp", "<nop>", {desc = "Parameter swap"})
 vim.keymap.set("n", "<leader>f", "<nop>", {desc = "Telescope"})
+vim.keymap.set("n", "<leader>fm", "<cmd>Telescope harpoon marks<CR>", {desc = "Telescope"})
 
 -- Keep window centered when going up/down
 vim.keymap.set("n", "J", "mzJ`z")
