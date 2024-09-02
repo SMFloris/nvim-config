@@ -700,6 +700,7 @@ return {
           "gopls",
           "delve",
           "astro-language-server",
+          "intelephense"
         },
       })
     end,
