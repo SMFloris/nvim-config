@@ -3,6 +3,7 @@ return {
   event = "VeryLazy",
   lazy = false,
   build = "make BUILD_FROM_SOURCE=true",
+  version = false,
   opts = {
     provider = "ollama",
     vendors = {
@@ -10,8 +11,8 @@ return {
         ["local"] = true,
         endpoint = "127.0.0.1:11434/v1",
         -- model = "codestral",
-        model = "phind-codellama",
-        -- model = "yi-coder",
+        -- model = "phind-codellama",
+        model = "yi-coder",
         -- model = "codestral",
         parse_curl_args = function(opts, code_opts)
           return {
