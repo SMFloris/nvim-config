@@ -2,6 +2,7 @@ return {
   "yetone/avante.nvim",
   event = "VeryLazy",
   lazy = false,
+  build = "make BUILD_FROM_SOURCE=true",
   opts = {
     provider = "ollama",
     vendors = {
