@@ -8,7 +8,10 @@ return {
       ollama = {
         ["local"] = true,
         endpoint = "127.0.0.1:11434/v1",
-        model = "codestral",
+        -- model = "codestral",
+        model = "phind-codellama",
+        -- model = "yi-coder",
+        -- model = "codestral",
         parse_curl_args = function(opts, code_opts)
           return {
             url = opts.endpoint .. "/chat/completions",
@@ -18,8 +21,8 @@ return {
             },
             body = {
               model = opts.model,
-              messages = require("avante.providers").claude.parse_message(code_opts),  -- you can make your own message, but this is very advanced
-              max_tokens = 2048,
+              messages = require("avante.providers").openai.parse_message(code_opts),  -- you can make your own message, but this is very advanced
+              max_tokens = 4096,
               stream = true,
             },
           }
