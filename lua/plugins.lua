@@ -6,19 +6,6 @@ return {
       rocks = { 'magick' },
     },
   },
-  {
-    "chentoast/marks.nvim",
-    config = function()
-      require("marks").setup({
-        default_mappings = false,
-        mappings = {
-          toggle = "ma",
-          next = "mm",
-          prev = "mn",
-        },
-      })
-    end,
-  },
   { 'brenoprata10/nvim-highlight-colors' },
   { "tpope/vim-projectionist" },
   {
