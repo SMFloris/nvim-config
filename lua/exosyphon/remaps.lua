@@ -23,7 +23,6 @@ vim.keymap.set("n", "<leader>l", "<nop>", {desc = "LSP"})
 vim.keymap.set("n", "<leader>lc", "<nop>", {desc = "Code Actions"})
 vim.keymap.set("n", "<leader>lp", "<nop>", {desc = "Parameter swap"})
 vim.keymap.set("n", "<leader>f", "<nop>", {desc = "Telescope"})
-vim.keymap.set("n", "<leader>fm", "<cmd>Telescope harpoon marks<CR>", {desc = "Telescope"})
 
 -- Keep window centered when going up/down
 vim.keymap.set("n", "J", "mzJ`z")
@@ -31,6 +30,13 @@ vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
+
+-- Neotree
+wk.add(({"<leader>e", group = "File explorer"}))
+vim.keymap.set("n", "<leader>e", "<cmd>Neotree toggle left<CR>", {desc = "Show Neotree"})
+
+-- close buffer
+vim.keymap.set("n", "<leader>q", "<cmd>bd<CR>", { desc = "Close Buffer" })
 
 -- Close buffer without closing split
 -- vim.keymap.set("n", "<leader>w", "<cmd>bp|bd #<CR>", { desc = "Close Buffer; Retain Split" })
@@ -46,6 +52,7 @@ vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><
 
 -- Debug Tests
 wk.add(({"<leader>d", group = "Debug"}))
+vim.keymap.set("n", "<leader>dt", "<cmd>DapContinue<CR>", { desc = "Start Debugging" })
 vim.keymap.set("n", "<leader>dc", "<cmd>DapContinue<CR>", { desc = "Start Debugging" })
 vim.keymap.set("n", "<leader>dso", "<cmd>DapStepOver<CR>", { desc = "Step Over" })
 vim.keymap.set("n", "<leader>dsi", "<cmd>DapStepInto<CR>", { desc = "Step Into" })
