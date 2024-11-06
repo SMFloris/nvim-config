@@ -31,10 +31,6 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
--- Neotree
-wk.add(({"<leader>e", group = "File explorer"}))
-vim.keymap.set("n", "<leader>e", "<cmd>Neotree toggle left<CR>", {desc = "Show Neotree"})
-
 -- close buffer
 vim.keymap.set("n", "<leader>q", "<cmd>bd<CR>", { desc = "Close Buffer" })
 
