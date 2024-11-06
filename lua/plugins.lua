@@ -27,8 +27,8 @@ return {
         api.config.mappings.default_on_attach(bufnr)
 
         -- custom mappings
-        vim.keymap.set("n", "<C-x>", api.tree.node.open.horizontal,                opts("Split H"))
-        vim.keymap.set("n", "<C-v>", api.tree.node.open.vertical,                  opts("Split V"))
+        vim.keymap.set("n", "<C-x>", api.tree.node.open.horizontal, opts("Split H"))
+        vim.keymap.set("n", "<C-v>", api.tree.node.open.vertical, opts("Split V"))
       end
     })
     end,
