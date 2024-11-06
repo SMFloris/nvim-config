@@ -29,6 +29,7 @@ vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
 
 vim.opt.updatetime = 50
-vim.opt.conceallevel = 2
+vim.opt.conceallevel = 0
+vim.opt.clipboard:append("unnamedplus")
 
 vim.opt.termguicolors = true

@@ -661,7 +661,6 @@ return {
     end,
   },
   "mg979/vim-visual-multi",
-  "tpope/vim-rails",
   {
     "williamboman/mason.nvim",
     dependencies = {
