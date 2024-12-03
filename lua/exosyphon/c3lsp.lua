@@ -6,9 +6,6 @@ if not configs.c3_lsp then
     default_config = {
       cmd = { "c3lsp" },
       filetypes = { "c3", "c3i" },
-      root_dir = function(fname)
-          return util.find_git_ancestor(fname)
-      end,
       settings = {},
       name = "c3_lsp"
     }
