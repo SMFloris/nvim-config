@@ -6,12 +6,8 @@ if not configs.c3_lsp then
     default_config = {
       cmd = { "c3lsp" },
       filetypes = { "c3", "c3i" },
-      root_dir = function(pattern)
-        local cwd = vim.uv.cwd()
-        local root = util.root_pattern('.git')(pattern)
-
-        -- prefer cwd if root is a descendant
-        return util.path.is_descendant(cwd, root) and cwd or root
+      root_dir = function(fname)
+          return util.find_git_ancestor(fname) or vim.fn.getcwd()
       end,
       settings = {},
       name = "c3_lsp"
