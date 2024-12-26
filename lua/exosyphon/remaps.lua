@@ -3,6 +3,9 @@ local wk = require("which-key")
 wk.add({"<leader>/", hidden = true})
 wk.add({"<leader>?", hidden = true})
 
+-- Codecompanion
+vim.keymap.set("n", "<leader>a", "<CMD> CodeCompanionChat Toggle<CR>", { desc = "Open CodeCompanion Chat" })
+
 -- Oil
 vim.keymap.set("n", "-", "<CMD>Oil --float<CR>", { desc = "Open parent directory" })
 
