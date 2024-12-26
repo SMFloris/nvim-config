@@ -7,6 +7,9 @@ return {
   config = function()
     require("codecompanion").setup({
       strategies = {
+        cmd = {
+          adapter = "ollama"
+        },
         chat = {
           adapter = "ollama",
         },
