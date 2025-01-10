@@ -9,17 +9,6 @@ return {
   { 'brenoprata10/nvim-highlight-colors' },
   { "tpope/vim-projectionist" },
   {
-    "nvim-tree/nvim-tree.lua",
-    version = "*",
-    lazy = false,
-    dependencies = {
-      "nvim-tree/nvim-web-devicons",
-    },
-    config = function()
-      require("nvim-tree").setup( )
-    end,
-  },
-  {
     "NeogitOrg/neogit",
     dependencies = {
       "nvim-lua/plenary.nvim",  -- required
