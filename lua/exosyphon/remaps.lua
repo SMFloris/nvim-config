@@ -6,9 +6,6 @@ wk.add({"<leader>?", hidden = true})
 -- Codecompanion
 vim.keymap.set("n", "<leader>a", "<CMD> CodeCompanionChat Toggle<CR>", { desc = "Open CodeCompanion Chat" })
 
--- Oil
-vim.keymap.set("n", "-", "<CMD>Oil --float<CR>", { desc = "Open parent directory" })
-
 -- Jump between markdown headers
 vim.keymap.set("n", "gj", [[/^##\+ .*<CR>]], { buffer = true, silent = true })
 vim.keymap.set("n", "gk", [[?^##\+ .*<CR>]], { buffer = true, silent = true })

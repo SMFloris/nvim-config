@@ -1,4 +1,4 @@
-local mini_files_km = require("config.modules.mini-files-km")
+-- local mini_files_km = require("config.modules.mini-files-km")
 
 -- -- git config is slowing mini.files too much, so disabling it
 -- local mini_files_git = require("config.modules.mini-files-git")
@@ -33,18 +33,6 @@ return {
       -- Below I created an autocmd with the "," keymap to open the highlighted
       -- directory in a tmux pane on the right
     })
-
-    -- Here I define my custom keymaps in a centralized place
-    opts.custom_keymaps = {
-      open_tmux_pane = "<M-t>",
-      copy_to_clipboard = "<space>yy",
-      zip_and_copy = "<space>yz",
-      paste_from_clipboard = "<space>p",
-      copy_path = "<M-c>",
-      -- -- Don't use "i" as it conflicts wit insert mode
-      -- preview_image = "<space>i",
-      -- preview_image_popup = "<M-i>",
-    }
 
     opts.windows = vim.tbl_deep_extend("force", opts.windows or {}, {
       preview = true,
@@ -100,7 +88,7 @@ return {
     -- Set up mini.files
     require("mini.files").setup(opts)
     -- Load custom keymaps
-    mini_files_km.setup(opts)
+    -- mini_files_km.setup(opts)
 
     -- -- Load Git integration
     -- -- git config is slowing mini.files too much, so disabling it
