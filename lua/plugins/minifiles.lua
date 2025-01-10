@@ -10,7 +10,7 @@ return {
     -- Module mappings created only inside explorer.
     -- Use `''` (empty string) to not create one.
     opts.mappings = vim.tbl_deep_extend("force", opts.mappings or {}, {
-      close = "<esc>",
+      close = "q",
       -- Use this if you want to open several files
       go_in = "l",
       -- This opens the file, but quits out of mini.files (default L)
