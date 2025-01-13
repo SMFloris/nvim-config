@@ -4,7 +4,6 @@ return {
   dependencies = {
     "nvim-lua/plenary.nvim",
     "joshmedeski/telescope-smart-goto.nvim",
-    "nvim-telescope/telescope-fzf-native.nvim",
   },
   config = function()
     local builtin = require("telescope.builtin")
