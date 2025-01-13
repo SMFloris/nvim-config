@@ -13,10 +13,7 @@ return {
     dependencies = {
       "nvim-lua/plenary.nvim",  -- required
       "sindrets/diffview.nvim", -- optional - Diff integration
-
-      -- Only one of these is needed, not both.
       "nvim-telescope/telescope.nvim", -- optional
-      "ibhagwan/fzf-lua",              -- optional
     },
     config = true,
   },
@@ -331,7 +328,7 @@ return {
       })
     end,
   },
-  { 'nvim-telescope/telescope-fzf-native.nvim', build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release' },
+  { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
   {
     "folke/tokyonight.nvim",
   },
@@ -520,10 +517,6 @@ return {
     config = function()
       require("nvim-surround").setup({})
     end,
-  },
-  {
-    "junegunn/fzf",
-    build = ":call fzf#install()",
   },
   "nvim-telescope/telescope-ui-select.nvim",
   "debugloop/telescope-undo.nvim",
